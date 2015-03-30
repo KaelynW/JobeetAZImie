@@ -1,3 +1,10 @@
+To Install :
+============
+
+ - php app/console doctrine:fixtures:load | database:create | schema:create
+ - composer.phar install
+ - composer.phar update
+
 Symfony Standard Edition
 ========================
 
