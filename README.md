@@ -1,9 +1,54 @@
 To Install :
 ============
+From the jobeet tutorial : 
+Setting up the working development environment
 
- - php app/console doctrine:fixtures:load | database:create | schema:create
- - composer.phar install
- - composer.phar update
+First of all, you need to check that your computer has a friendly working environment for web development. We will use Ubuntu 12.04 LTS Server installed in a VMware Player virtual machine. At a minimum, you need a web server (Apache, for instance), a database engine (MySQL) and PHP 5.3.3 or later :
+    - sudo apt-get install apache2
+
+    - sudo apt-get install apache2
+ 
+    - sudo a2enmod rewrite
+ 
+    - sudo apt-get install mysql-server mysql-client
+ 
+    - sudo apt-get install php5 libapache2-mod-php5 php5-mysql
+	
+    - sudo apt-get install php5-intl
+ 
+    - sudo service apache2 restart
+    
+Then :
+    
+    curl -s https://getcomposer.org/installer | php
+    
+    php app/console doctrine:fixtures:load | database:create | schema:create
+    
+    composer.phar install
+    
+    composer.phar update
+
+Make sure you got your VirtualHost and /etc/hosts setup properly as this:
+
+<VirtualHost *:80>
+    ServerName jobeet.local
+    DocumentRoot /var/www/jobeet/web
+    DirectoryIndex app.php
+    ErrorLog /var/log/apache2/jobeet-error.log
+    CustomLog /var/log/apache2/jobeet-access.log combined
+    <Directory "/var/www/jobeet/web">
+        AllowOverride All
+        Allow from All
+     </Directory>
+</VirtualHost>
+
+
+About this project
+==================
+
+Project made for Symphony2 iniation for IMIE Rennes.
+
+Created by Anthony Zedoud
 
 Symfony Standard Edition
 ========================
